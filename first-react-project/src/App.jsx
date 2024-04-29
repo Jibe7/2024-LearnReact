@@ -6,13 +6,25 @@ function App() {
   const [ playerTurn, setPlayerTurn ] = useState("O");
   let [morpionG, setMorpionG ] = useState(Array.from(new Array(9), (el) => 0));
   let [isFinished, setIsFinished] = useState(false);
+  let [isReset, setIsReset] = useState(false);
 
   let morpionGrid = Array.from(new Array(9), (el, index) => <li 
   style={{
     margin: "0",
     padding: "0"
   }}
-  key={index}>< Carre playerTurn={playerTurn} setPlayer={setPlayerTurn} id={index} gridArray={morpionG} setGridArray={setMorpionG} isFinished={isFinished} setIsFinished={setIsFinished}  /></li>); 
+  key={index}>< Carre playerTurn={playerTurn} setPlayer={setPlayerTurn} id={index} gridArray={morpionG} setGridArray={setMorpionG} isFinished={isFinished} setIsFinished={setIsFinished} setIsReset={setIsReset} /></li>); 
+
+  function resetGrid() {
+
+    morpionGrid = Array.from(new Array(9), (el, index) => <li 
+  style={{
+    margin: "0",
+    padding: "0"
+  }}
+  key={index}>< Carre playerTurn={playerTurn} setPlayer={setPlayerTurn} id={index} gridArray={morpionG} setGridArray={setMorpionG} isFinished={isFinished} setIsFinished={setIsFinished} setIsReset={setIsReset} /></li>); 
+  setIsReset(false);
+  }
 
   return (
   <>
@@ -39,11 +51,23 @@ function App() {
     }}>
       {morpionGrid}
     </ul>
-    <h1 style={{
-      marginLeft: "10vw",
-      display: isFinished ? "inline" : "none",
-      color: "white"
-    }}>Result : Player {playerTurn} wins !</h1>
+    <div 
+    style={{
+      display: "flex",
+      flexDirection: "column"
+    }}>
+      <h1 style={{
+        marginLeft: "10vw",
+        display: isFinished ? "inline" : "none",
+        color: "white"
+      }}>Result : Player {playerTurn} wins !</h1>
+      <button 
+      style={{
+        marginLeft: "10vw",
+        display: isReset ? "inline" : "none",
+        color: "black"
+      }} onClick={resetGrid}>Reset</button>
+    </div>
   </div>
   </>
   );

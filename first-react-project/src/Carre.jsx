@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export function Carre({ playerTurn, setPlayer, id, gridArray, setGridArray, isFinished, setIsFinished }) {
+export function Carre({ playerTurn, setPlayer, id, gridArray, setGridArray, isFinished, setIsFinished, setIsReset }) {
     const [ drawState, setDrawState ] = useState("");
 
     const verifyGrid = function(arr) {
@@ -59,8 +59,7 @@ export function Carre({ playerTurn, setPlayer, id, gridArray, setGridArray, isFi
             setGridArray(grid)
             let p = playerTurn === "O" ? "X" : "O";
             let b = verifyGrid(grid);
-            console.log(b)
-            b ? setIsFinished(b) : setPlayer(p);
+            b ? [setIsFinished(b), setIsReset(true)] : setPlayer(p);
         }
     }
 
