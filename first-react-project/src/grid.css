@@ -1,0 +1,22 @@
+.grid-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100vw;
+    height: 100vh;
+    background-color: yellow;
+}
+
+.grids {
+    display: flex;
+    height: fit-content;
+    width: min(45vh, 45vw);
+    flex-wrap: wrap;
+    background-color: antiquewhite;
+}
+
+aside {
+    flex: 1 1 5vw;
+    height: 100vh;
+    background-color: aqua;
+}
