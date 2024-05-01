@@ -30,7 +30,7 @@ export default function Grid() {
     const [displayText, setDisplayText] = useState("");
 
     function playSquare(squareID) {
-        if (squareValues[squareID] === "") {
+        if (squareValues[squareID] === "" && displayText === "") {
             let tmp = squareValues.slice();
             tmp[squareID] = playerTurn;
             setPlayerTurn(playerTurn === "O" ? "X" : "O");
