@@ -15,15 +15,21 @@ function Square({ value, onClick }) {
     )
 }
 
-
+function Winner({ text }) {
+    return (
+        <>
+            <h1>{text}</h1>
+        </>
+    )
+}
 
 export default function Grid() {
     const [squareValues, setsquareValues] = useState(Array(9).fill(""));
     const [playerTurn, setPlayerTurn] = useState(INITIALPLAYER);
     const [plays, setPlays] = useState(0);
+    const [displayText, setDisplayText] = useState("");
 
     function playSquare(squareID) {
-        console.log("Clicked")
         if (squareValues[squareID] === "") {
             let tmp = squareValues.slice();
             tmp[squareID] = playerTurn;
@@ -35,14 +41,20 @@ export default function Grid() {
                 let winner = testWinner(tmp, playerTurn);
                 console.log(winner)
                 if (winner) {
-                    // Logic to handle victory
+                    setDisplayText(`The Winner is: ${winner}`)
                     console.log(`Victory of player ${playerTurn}`)
                 } else if (roundNumber === 9) {
-                    // Logic to handle a draw
+                    setDisplayText(`This is a draw.`)
                     console.log("Draw")
                 }
             }
         }
+    }
+
+    function reset() {
+        setsquareValues(Array(9).fill(""))
+        setPlays(0)
+        setDisplayText("")
     }
 
     let squares = []
@@ -55,18 +67,30 @@ export default function Grid() {
     
     // Update the squares when the user click on them OK
     // Follow the current player variable OK
-    // Check if one user has won or if the game finished in a draw
-    // Display a reset button to reset the game
-    // Reset the game
+    // Check if one user has won or if the game finished in a draw OK
+    // Display a reset button to reset the game OK
+    // Reset the game OK
     
     return ( 
     <>
         <div className="grid-container">
-            <aside></aside>
+            <aside>
+                <button style={{
+                    display: displayText!=="" ? "inline" : "none",
+                    width:"min(15vh, 15vw)",
+                    height:"min(8vh, 8vw)",
+                    borderRadius:"10%",
+                    border:"1px solid black",
+                }}
+                onClick={reset}    
+                >Reset</button>
+            </aside>
             <div className="grids">
                 {squares}
             </div>
-            <aside></aside>
+            <aside>
+                <Winner text={displayText} />
+            </aside>
         </div>
     </>
     )

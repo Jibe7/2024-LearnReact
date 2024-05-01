@@ -4,7 +4,8 @@
     align-items: center;
     width: min(15vh, 15vw); 
     height: min(15vh, 15vw);
-    background-color: red;
+    background-color: rgb(66, 40, 107);
     border:1px solid black;
     border-radius: 5%;
+    font-size: min(10vw, 10vh);
 }

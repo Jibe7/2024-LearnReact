@@ -4,7 +4,7 @@
     justify-content: space-between;
     width: 100vw;
     height: 100vh;
-    background-color: yellow;
+    background-color: rgb(43, 43, 43);
 }
 
 .grids {
@@ -12,11 +12,14 @@
     height: fit-content;
     width: min(45vh, 45vw);
     flex-wrap: wrap;
-    background-color: antiquewhite;
+    /* background-color: antiquewhite; */
 }
 
 aside {
     flex: 1 1 5vw;
     height: 100vh;
-    background-color: aqua;
+    /* background-color: aqua; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
