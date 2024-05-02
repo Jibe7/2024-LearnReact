@@ -8,12 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v2
-        with:
-          node-version: 20
+        uses: actions/checkout@v3
 
       - name: Setup Node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: 20
 
@@ -23,7 +21,6 @@ jobs:
         uses: bahmutov/npm-install@v1
         with:
           working-directory: ./first-react-project
-          node-version: 20
         
 
       - name: Build project
@@ -35,7 +32,6 @@ jobs:
         with:
           name: production-files
           path: ./first-react-project/dist  
-          node-version: 20
 
   deploy:  # Assuming separate deployment job is preferred
     name: Deploy
@@ -47,7 +43,6 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: production-files
-          node-version: 20
       - name: Deploy to GitHub Pages Workflow
         uses: peaceiris/actions-gh-pages@v3
         with:
