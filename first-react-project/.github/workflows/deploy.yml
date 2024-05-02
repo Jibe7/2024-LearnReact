@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        project: ["ReactProject1", "ReactProject2"]  # List your project names here
+        project: ["first-react-project"]  # List your project names here
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
