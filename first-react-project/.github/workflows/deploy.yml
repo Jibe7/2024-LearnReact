@@ -22,7 +22,7 @@ jobs:
           node-version: 16
 
       - name: Change directory to project
-        run: cd ReactProjects/{{ matrix.project }}
+        run: cd 2024-LearnReact/{{ matrix.project }}
 
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
@@ -39,12 +39,15 @@ jobs:
   deploy:  # Assuming separate deployment job is preferred
     needs: build
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        project: ["first-react-project"] 
     if: github.ref == 'refs/heads/main'
     steps:
       - name: Download artifact for specific project
         uses: actions/download-artifact@v2
         with:
-          name: ${{ needs.build.outputs.project }}-production-files
+          name: ${{ matrix.project }}-production-files
       - name: Deploy to GitHub Pages Workflow
         uses: peaceiris/actions-gh-pages@v3
         with:
