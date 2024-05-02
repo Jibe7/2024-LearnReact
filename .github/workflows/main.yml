@@ -15,11 +15,14 @@ jobs:
         with:
           node-version: 16
 
+      - name: Change directory to project
+        run: cd 2024-LearnReact/first-react-project
+
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
 
       - name: Build project
-        run: npm run build --dir=2024-LearnReact/first-react-project
+        run: npm run build --dir=./first-react-project
 
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v2
@@ -31,9 +34,6 @@ jobs:
     name: Deploy
     needs: build
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        project: ["first-react-project"] 
     if: github.ref == 'refs/heads/main'
     steps:
       - name: Download artifact for specific project
