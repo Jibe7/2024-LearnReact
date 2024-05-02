@@ -38,7 +38,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: production-files
-          path: ./dist  # Adjust path if your build output is different
+          path: ./first-react-project/dist  # Adjust path if your build output is different
 
   deploy:  # Assuming separate deployment job is preferred
     name: Deploy
