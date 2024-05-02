@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   test : {
-    base: "/2024-LearnReact/",
+    base: "/2024-LearnReact/first-react-project",
     globals: true,
     environment: 'jsdom',
     css: true,
