@@ -19,7 +19,7 @@ jobs:
           node-version: 16
 
       - name: Change directory to project
-        run: cd 2024-LearnReact/{{ matrix.project }}
+        run: cd 2024-LearnReact/${{ matrix.project }}
 
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
