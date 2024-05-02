@@ -27,7 +27,7 @@ jobs:
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
         with:
-          path: ./first-react-project
+          working-directory: ./first-react-project
 
       - name: Build project
         run: npm run build --dir=./first-react-project
