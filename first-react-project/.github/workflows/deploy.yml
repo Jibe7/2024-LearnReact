@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    name: Build & Deploy (${{ matrix.project }})
+    name: Build 
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -22,7 +22,7 @@ jobs:
           node-version: 16
 
       - name: Change directory to project
-        run: cd 2024-LearnReact/{{ matrix.project }}
+        run: cd 2024-LearnReact/${{ matrix.project }}
 
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
@@ -37,6 +37,7 @@ jobs:
           path: ./dist  # Adjust path if your build output is different
 
   deploy:  # Assuming separate deployment job is preferred
+    name: Deploy
     needs: build
     runs-on: ubuntu-latest
     strategy:
