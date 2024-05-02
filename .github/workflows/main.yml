@@ -15,14 +15,14 @@ jobs:
         with:
           node-version: 16
 
-      - name: Print files in current directory
-        run: ls 
+      # - name: Print files in current directory
+      #   run: ls 
 
-      - name: Print working directory
-        run: pwd
+      # - name: Print working directory
+      #   run: pwd
 
       - name: Change directory to project
-        run: cd 2024-LearnReact/first-react-project
+        run: cd /first-react-project
 
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
