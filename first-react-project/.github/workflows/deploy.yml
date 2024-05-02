@@ -7,9 +7,11 @@ on:
 
 jobs:
   build:
-    name: Build
+    name: Build & Deploy (${{ matrix.project }})
     runs-on: ubuntu-latest
-
+    strategy:
+      matrix:
+        project: ["ReactProject1", "ReactProject2"]  # List your project names here
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
@@ -19,32 +21,31 @@ jobs:
         with:
           node-version: 16
 
+      - name: Change directory to project
+        run: cd ReactProjects/{{ matrix.project }}
+
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
 
       - name: Build project
-        run: npm run build
+        run: npm run build  # Adjust build command if needed
 
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v2
         with:
-          name: production-files
-          path: ./dist
+          name: ${{ matrix.project }}-production-files
+          path: ./dist  # Adjust path if your build output is different
 
-  deploy:
-    name: Deploy
+  deploy:  # Assuming separate deployment job is preferred
     needs: build
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
-
     steps:
-      - name: Download artifact
+      - name: Download artifact for specific project
         uses: actions/download-artifact@v2
         with:
-          name: production-files
-          path: ./dist
-
-      - name: Deploy to GitHub Pages
+          name: ${{ needs.build.outputs.project }}-production-files
+      - name: Deploy to GitHub Pages Workflow
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
