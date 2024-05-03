@@ -1,10 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import Game from './Game.jsx'
-import './index.css'
+import App from './App.jsx'
+// import './style/index.css'
+import './style/resetCSS.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Game />
+    <App />
   </React.StrictMode>,
 )
