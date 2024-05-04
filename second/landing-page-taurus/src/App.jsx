@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
+import LoginButton from './LoginButton'
 import './style/App.css'
 import './style/main.css'
+
 
 function App() {
   const [count, setCount] = useState(0)
@@ -16,7 +18,7 @@ function App() {
           <h1 className='rainbow-title'></h1>
           <h2 className='catc-phrase'></h2>
           <p className="useCases"></p>
-          <button className="login"></button>
+          <LoginButton displayText={"Connexion"} look="upright" />
         </section>
         <section className='visual-example'>
           <img src="" alt="" />

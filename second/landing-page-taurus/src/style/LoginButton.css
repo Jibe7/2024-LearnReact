@@ -1,0 +1,24 @@
+
+.downleft {
+    background-color: #8ab4f8;
+    width: 120px;
+    height: 50px;
+    border-radius: 24px;
+    border: none;
+}
+.downleft:hover {
+    background-color: #9fc1f8;
+    cursor: pointer;
+}
+
+.upright {
+    background-color: rgb(138, 180, 248);
+    width: 120px;
+    height: 40px;
+    border-radius: 4px;
+    border: none;
+}
+.upright:hover {
+    background-color: rgb(155, 192, 252);
+    cursor: pointer;
+}
