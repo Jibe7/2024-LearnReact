@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
 #root {
-  max-width: 1280px;
+  /* max-width: 1280px; */
   text-align: center;
   --mat-background-color: #303030;
   --color-neutral: #0e0e0f;

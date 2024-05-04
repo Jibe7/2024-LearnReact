@@ -1,10 +1,39 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import LoginButton from './LoginButton'
-import './style/App.css'
-import './style/main.css'
+import { useState } from 'react';
+import reactLogo from './assets/react.svg';
+import viteLogo from '/vite.svg';
+import LoginButton from './LoginButton';
+import './style/App.css';
+import './style/main.css';
+import './style/NavigationBar.css';
 
+import { useMediaQuery } from 'react-responsive';
+function NavigationBar() {
+  const isMobile = useMediaQuery({ query: '(max-width: 930px)' });
+  // const isMobile = false;
+  // const isMobile = true;
+
+  return (
+    <>
+      <nav className='navbar'>
+        <div className="left">
+          {isMobile ? 
+          <div id='ocNavBar'>
+            <div className='line'></div>
+            <div className='line'></div>
+            <div className='line'></div>
+          </div> 
+          : undefined}
+          <h6>Taurus - Web Chat App</h6>
+        </div>
+        <div className="right">
+            {!isMobile ? <a href="">Pour les entreprises</a> : undefined}
+            {!isMobile ? <a href="">Questions fréquentes</a> : undefined}
+            <LoginButton displayText={"Connexion"} look="upright" />
+        </div>
+      </nav>
+    </>
+  )
+}
 
 function App() {
   const [count, setCount] = useState(0)
@@ -12,13 +41,15 @@ function App() {
   return (
     <>
     <main>
-      <header></header>
+      <header>
+        <NavigationBar />
+      </header>
       <article>
         <section className='app-desc'>
           <h1 className='rainbow-title'></h1>
           <h2 className='catc-phrase'></h2>
           <p className="useCases"></p>
-          <LoginButton displayText={"Connexion"} look="upright" />
+          <LoginButton displayText={"Se Connecter"} look="downleft" />
         </section>
         <section className='visual-example'>
           <img src="" alt="" />
